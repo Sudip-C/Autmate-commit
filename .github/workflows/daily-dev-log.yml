@@ -18,6 +18,9 @@ jobs:
   update-log:
     name: Record today's activity
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: DailyDot
 
     steps:
       - name: Check out repository
