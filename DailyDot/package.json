@@ -1,0 +1,15 @@
+{
+  "name": "dailydot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A transparent daily development log powered by GitHub Actions.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node scripts/update-log.mjs",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
