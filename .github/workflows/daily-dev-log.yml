@@ -1,0 +1,58 @@
+name: Daily Dev Log
+
+on:
+  schedule:
+    # Runs every day at 12:17 AM in India. Minute 17 avoids peak load at :00.
+    - cron: "17 0 * * *"
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-dev-log-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update-log:
+    name: Record today's activity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: npm test
+
+      - name: Update daily log
+        env:
+          APP_TIMEZONE: Asia/Kolkata
+        run: node scripts/update-log.mjs
+
+      - name: Commit and push when changed
+        env:
+          COMMIT_AUTHOR_NAME: ${{ vars.COMMIT_AUTHOR_NAME || github.repository_owner }}
+          COMMIT_AUTHOR_EMAIL: ${{ vars.COMMIT_AUTHOR_EMAIL || format('{0}+{1}@users.noreply.github.com', github.repository_owner_id, github.repository_owner) }}
+        shell: bash
+        run: |
+          if git diff --quiet -- README.md data/activity.json; then
+            echo "Today's entry already exists; nothing to commit."
+            exit 0
+          fi
+
+          LOG_DATE="$(node -p "JSON.parse(require('node:fs').readFileSync('data/activity.json', 'utf8')).entries.at(-1).date")"
+
+          git add -- README.md data/activity.json
+          git -c user.name="$COMMIT_AUTHOR_NAME" \
+              -c user.email="$COMMIT_AUTHOR_EMAIL" \
+              commit -m "chore(devlog): record ${LOG_DATE}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
