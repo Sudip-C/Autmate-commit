@@ -12,7 +12,7 @@ then commits the change to your repository's default branch.
 
 | Logged days | Current streak | Longest streak | Latest entry |
 | ---: | ---: | ---: | :--- |
-| 4 | 4 days | 4 days | 2026-08-24 |
+| 5 | 5 days | 5 days | 2026-08-25 |
 
 _Generated automatically from `data/activity.json` using the Asia/Kolkata calendar._
 <!-- DAILY_STATS_END -->
