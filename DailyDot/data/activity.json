@@ -81,6 +81,14 @@
       "dayOfYear": 242,
       "source": "schedule",
       "note": "Automated daily development check-in"
+    },
+    {
+      "date": "2026-08-31",
+      "weekday": "Monday",
+      "isoWeek": "2026-W36",
+      "dayOfYear": 243,
+      "source": "schedule",
+      "note": "Automated daily development check-in"
     }
   ]
 }
