@@ -137,6 +137,14 @@
       "dayOfYear": 249,
       "source": "schedule",
       "note": "Automated daily development check-in"
+    },
+    {
+      "date": "2026-09-07",
+      "weekday": "Monday",
+      "isoWeek": "2026-W37",
+      "dayOfYear": 250,
+      "source": "schedule",
+      "note": "Automated daily development check-in"
     }
   ]
 }
