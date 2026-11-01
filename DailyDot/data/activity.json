@@ -585,6 +585,14 @@
       "dayOfYear": 305,
       "source": "schedule",
       "note": "Automated daily development check-in"
+    },
+    {
+      "date": "2026-11-02",
+      "weekday": "Monday",
+      "isoWeek": "2026-W45",
+      "dayOfYear": 306,
+      "source": "schedule",
+      "note": "Automated daily development check-in"
     }
   ]
 }
