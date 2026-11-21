@@ -745,6 +745,14 @@
       "dayOfYear": 325,
       "source": "schedule",
       "note": "Automated daily development check-in"
+    },
+    {
+      "date": "2026-11-22",
+      "weekday": "Sunday",
+      "isoWeek": "2026-W47",
+      "dayOfYear": 326,
+      "source": "schedule",
+      "note": "Automated daily development check-in"
     }
   ]
 }
